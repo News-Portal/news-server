@@ -4,6 +4,8 @@ const gameController = require('../controllers/gameController')
 
 router.get('/', gameController.showGame)
 
-router.get('/platform', gameController.showPlatform)
+router.get('/platforms', gameController.showPlatform)
+
+router.get('/platform/:id', gameController.showPlatformGame)
 
 module.exports = router

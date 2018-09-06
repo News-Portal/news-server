@@ -11,7 +11,7 @@ class Controller {
           })
       })
       .catch(err => {
-        res.status(500).json({err})
+        res.status(500).json({error: err.message})
       })
   }
   
@@ -29,7 +29,7 @@ class Controller {
         })
           .then(response => {
             objGames.push(response.data[0])
-            if (objGames.length === ids.length) {
+            if (objGames.length === 10) {
               resolve(objGames)
             }
           })
@@ -73,7 +73,7 @@ class Controller {
           })
       })
       .catch(err => {
-        res.send(500).json({})
+        res.send(500).json({error: err.message})
       })
   }
   
@@ -124,6 +124,19 @@ class Controller {
           })
       })
     })
+  }
+  
+  static showPlatformGame(req, res) {
+    Controller.getPlatform(req, res, [req.params.id])
+      .then(platform => {
+        Controller.getGame(req, res, platform[0].games)
+          .then(games => {
+            res.status(200).json(games)
+          })
+      })
+      .catch(err => {
+        res.status(500).json({error: err.message})
+      })
   }
   
 }
