@@ -18,11 +18,11 @@ db.once('open', function() {
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var newsRouter=require('./routes/news')
 var movieRouter = require('./routes/movies');
 var jobGit = require('./routes/jobsGit');
 var gameRouter  = require('./routes/game');
 var currentsRouter = require('./routes/currentsApi')
-
 
 var app = express();
 
@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/news',newsRouter);
 app.use('/movies',movieRouter);
 app.use('/jobsgit', jobGit)
 app.use('/game', gameRouter);
