@@ -8,7 +8,7 @@ const request = require('request')
     
     list: (req, res) => {
         let options = {
-            url: `https://newsapi.org/v2/top-headlines?country=us&apiKey=a6a700885dd14683a56e9f969a8943e6`,
+            url: `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.TOP_NEWS_API}`,
             headers: {
               'User-Agent': 'request'
             }
@@ -30,7 +30,7 @@ const request = require('request')
     countrylist: (req, res) => {
         // res.send(req.body.country)
         let options = {
-            url: `https://newsapi.org/v2/top-headlines?country=${req.body.country}&apiKey=a6a700885dd14683a56e9f969a8943e6`,
+            url: `https://newsapi.org/v2/top-headlines?country=${req.body.country}&apiKey=${process.env.TOP_NEWS_API}`,
             headers: {
               'User-Agent': 'request'
             }
