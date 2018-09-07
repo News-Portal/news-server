@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { jobsGit, searchJob } = require('../controllers/jogGitController')
 
-router.get('/jobsgit', jobsGit)
-router.post('/jobsgit', searchJob)
+router.get('/', jobsGit)
+router.post('/', searchJob)
 
 module.exports = router
