@@ -46,7 +46,8 @@ const login = function (req, res) {
     User.findOne({
         email: req.body.email
     })
-        .then(function (dataUser) {
+    .then(function (dataUser) {
+        console.log('masuuk then', dataUser);
             if (dataUser) {
                 let token = jwt.sign({
                     id: dataUser._id,
@@ -55,13 +56,18 @@ const login = function (req, res) {
                 }, process.env.JWT_KEY)
                 let decodedPass = bcrypt.compareSync(req.body.password, dataUser.password)
                 if (decodedPass) {
+                    console.log('ini token', token);
                     res.status(200).json({ token })
+                    console.log('masuuk token');
                 } else {
+                    console.log('masuuk else');
                     res.status(400).json({ message: "email/password wrong " })
                 }
             }
         })
         .catch(function (err) {
+            console.log('masuuk catch');
+            
             res.status(500).json({
                 message: "email not found",
                 error: err.message
